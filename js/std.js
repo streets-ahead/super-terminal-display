@@ -78,4 +78,5 @@ function toggleFade() {
 
 setInterval(function() { toggleFade() }, 25)
 
-println("Welcome to Super Terminal Display, this site is brought to you by Streets Ahead.  Type help to get started.");
+var saLink = "<a href='http://streetsaheadllc.com'>Streets Ahead</a>"
+println("Welcome to Super Terminal Display, this site is brought to you by " + saLink + ".  Type help to get started.");
