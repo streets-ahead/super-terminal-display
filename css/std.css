@@ -1,12 +1,15 @@
 body {
 	background-color:#111;
-	color:#94ba05;
+	color:#8ad213;
 	font-family:'Monaco', sans-serif;
 	font-size:16px;
 }
 
 .cursor {
-	width:5px;
-	height:16px;
 	background-color:#94ba05;
 }
+
+.cursor-blur {
+	border: 1px solid #94ba05;
+}
+

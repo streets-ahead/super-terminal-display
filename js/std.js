@@ -1,9 +1,27 @@
+var commandStack = [];
+var commandPointer = 0;
+
 var $tin = $('#tin');
 $tin.focus();
-$tin.blur( function() { setTimeout(function() {$('#tin').focus();}, 10) });
+$tin.blur( function() {
+	console.log('blur');
+	$('.cursor').removeClass('cursor').addClass('cursor-blur').css('opacity', '1');
+	
+});
+
+$tin.focus( function() {
+	$('.cursor-blur').removeClass('cursor').addClass('cursor');
+});
 
 var $current = $('.current .content');
 var $main = $('#main');
+
+$main.click(function(e) {
+	console.log('click');
+	setTimeout( function() { $tin.focus(); }, 10);
+//	e.preventDefault()
+});
+
 $tin.keyup( function(e) {
 	if(e.keyCode === 13) {
 		var command = $tin.val();
@@ -14,52 +32,54 @@ $tin.keyup( function(e) {
 		var newRow = $("<div class='row current'>&nbsp;&gt;&nbsp;<span class='content'></span><span class='cursor'>&nbsp;</span></div>");
 		$main.append(newRow);
 		$current = $('.content', newRow);
-		setTimeout(function() {execute(command)}, 1);
+		if(command !== '') {
+			execute(command.split(' '));
+		}
+	} else if (e.keyCode === 38) {
+		if(commandStack.length > 0 && commandPointer > -1) {
+			$tin.val(commandStack[--commandPointer]);
+			$current.html($tin.val());
+		}
+	} else if (e.keyCode === 40) {
+		if(commandStack.length > 0 && commandPointer < commandStack.length) {
+			$tin.val(commandStack[++commandPointer]);
+			$current.html($tin.val());
+		}
 	} else {
 		$current.html($tin.val());
 	}
 });
 
 function println(str) {
+	str = str.replace(' ', '&nbsp;');
 	var newRow = $("<div class='row blah'>" + str + "</div>");
 	console.log($('#main > div:last-child'))
 	var $currentRow = $('.current');
 	newRow.insertBefore($currentRow);
 }
 
+function clear() {
+	$main.empty();
+	$tin.val('');
+	var $currentRow = $('.current');
+	$currentRow.children('.cursor').remove();
+	$currentRow.removeClass('current');
+	var newRow = $("<div class='row current'>&nbsp;&gt;&nbsp;<span class='content'></span><span class='cursor'>&nbsp;</span></div>");
+	$main.append(newRow);
+	$current = $('.content', newRow);
+	
+}
+
 function execute(command) {
-	switch (command) {
-		case 'streets':
-			window.open('http://streetsaheadllc.com');
-			break;
-		case 'defug':
-			window.open('http://defuglification.com');
-			break;
-		case 'danas-mom':
-		case 'dm':
-			window.open('http://danasmom.com');
-			break;
-		case 'sam':
-			window.open('http://sammussell.com');
-			break;
-		case 'terry':
-			window.open('http://tkeeney.com');
-			break;
-		case 'dilbert':
-			window.open('http://dilbert.com')
-			break;
-		case 'std':
-			window.open('http://video.google.com/videoplay?docid=-3382491587979249836');
-			break;
-		case 'spanish-genius':
-		case 'sg':
-			window.open('http://26.media.tumblr.com/tumblr_kxyk8tgEPA1qzn4vjo1_500.jpg');
-			break;
-		case 'help':
-			println('Possible commands are streets, defug, danas-mom (dm), sam, spanish-genius (sg), dilbert, std, and help...');
-			break;
-		default:
+	commandStack.push(command);
+	commandPointer = commandStack.length;
+
+	if(commands[command[0]]) {
+		commands[command[0]](command.splice(1));
+	} else {
+		println('Command not  found, type help for possible commands.');
 	}
+
 }
 
 var opac = 1;

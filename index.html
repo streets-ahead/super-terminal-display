@@ -3,14 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Super Terminal Display</title>
-    <link rel="stylesheet" href="styles/std.css"
+    <link rel="stylesheet" href="css/std.css">
+	<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.17.custom.css">
   </head>
   <body>
     <div id='main'>
 		<div class='row current'>&nbsp;&gt;&nbsp;<span class='content'></span><span class='cursor'>&nbsp;</span></div>
 	</div> <!-- main -->
+	
 	<input type='text' id='tin' style='position:absolute; top:-100px;'>
-	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'> </script>
+	<script src='js/jquery-1.7.1.js'> </script>
+	<script src='js/jquery-ui-1.8.17.custom.min.js'></script>
+	<script src='js/commands.js'></script>
 	<script src='js/std.js'></script>
   </body>
 </html>
