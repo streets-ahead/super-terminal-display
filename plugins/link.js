@@ -1,8 +1,9 @@
 
 var Plugin = {
-  run: function(method, args ) { this[method](args[0]); },
-  add: function(link){
+  run: function(method, args, callback ) { this[method](args[0], callback); },
+  add: function(link, callback){
     console.log("adding " + link);
+	callback();
   }
 }
 

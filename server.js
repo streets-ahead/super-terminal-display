@@ -10,10 +10,11 @@ console.log('http://localhost:8080/');
 var dnode = require('dnode');
 var server = dnode({
   zing : function (n, cb) { cb(n * 100) },
-  run: function(plugin, args){
+  run: function(plugin, args, callback){
     var cmd = require('./plugins/' + plugin + '.js');
     console.log(args);
-    cmd.run(args[0], args.slice(1));
+    console.log(callback);
+    cmd.run(args[0], args.slice(1), callback);
   }
 });
 server.listen(app);

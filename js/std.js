@@ -79,7 +79,7 @@ function execute(command) {
 	if(commands[command[0]]) {
 		commands[command[0]](command.slice(1));
 	} else {
-		terminal.run(command[0], command.slice(1));
+		terminal.run(command[0], command.slice(1), function(res) { console.log('got result'); });
 		//println('Command not  found, type help for possible commands.');
 	}
 
