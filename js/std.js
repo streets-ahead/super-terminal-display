@@ -1,5 +1,8 @@
+
 var commandStack = [];
 var commandPointer = 0;
+
+var terminal;
 
 var $tin = $('#tin');
 $tin.focus();
@@ -33,6 +36,8 @@ $tin.keyup( function(e) {
 		$main.append(newRow);
 		$current = $('.content', newRow);
 		if(command !== '') {
+			commandStack.push(command);
+			commandPointer = commandStack.length;
 			execute(command.split(' '));
 		}
 	} else if (e.keyCode === 38) {
@@ -71,13 +76,11 @@ function clear() {
 }
 
 function execute(command) {
-	commandStack.push(command);
-	commandPointer = commandStack.length;
-
 	if(commands[command[0]]) {
-		commands[command[0]](command.splice(1));
+		commands[command[0]](command.slice(1));
 	} else {
-		println('Command not  found, type help for possible commands.');
+		terminal.run(command[0], command.slice(1));
+		//println('Command not  found, type help for possible commands.');
 	}
 
 }
@@ -98,4 +101,10 @@ function toggleFade() {
 
 setInterval(function() { toggleFade() }, 25)
 
-println("Welcome to Super Terminal Display, this site is brought to you by Streets Ahead.  Type help to get started.");
+var saLink = "<a href='http://streetsaheadllc.com'>Streets Ahead</a>"
+println("Welcome to Super Terminal Display, this site is brought to you by " + saLink + ".  Type help to get started.");
+
+DNode.connect(function(remote){
+  terminal = remote;
+});
+

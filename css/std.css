@@ -5,6 +5,10 @@ body {
 	font-size:16px;
 }
 
+a:visited{
+  color:#94ba05;
+}
+
 .cursor {
 	background-color:#94ba05;
 }
