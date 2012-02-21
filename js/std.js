@@ -60,7 +60,8 @@ function execute(command) {
 			println('Possible commands are streets, defug, danas-mom (dm), sam, spanish-genius (sg), dilbert, std, and help...');
 			break;
 		default:
-      terminal.zing(66, function(n){ println(n);});
+      var args = command.split(' ');
+      terminal.run(args[0], args.slice(1));
       break;
 	}
 }
