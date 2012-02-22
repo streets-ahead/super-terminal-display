@@ -8,7 +8,8 @@ var $tin = $('#tin');
 		$('#focusbutton').click(function() {
 			$tin.focus();
 		});
-		$('body').css('padding-top', '50px');
+		$('body').css('padding-top', '30px');
+		$('.footer').hide()
 	}
 })()
 
