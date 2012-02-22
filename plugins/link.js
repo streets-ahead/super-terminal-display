@@ -11,7 +11,7 @@ var Link = new Schema({
 var STDLink = mongoose.model('Link', Link);
 
 var Plugin = {
-  run: function(method, callback, args) { console.log("uuuuuu");this[method](callback, args[0]); },
+  run: function(method, callback, args) { this[method](callback, args[0]); },
   add: function(callback, link){
     mongoose.connect("mongodb://localhost/std")
     var myLink = new STDLink();
@@ -32,10 +32,21 @@ var Plugin = {
       });
     });
   },
-  show: function(callback){
+  show: function(callback, args){
+          mongoose.connect("mongodb://localhost/std")
           STDLink.find({}, function(err, docs){
-            console.log(err);
-            callback("showLinks", {links: docs});
+            var arr = []
+            for(var i in docs){
+              var link = docs[i]
+              var obj = {
+                link: link.link,
+                title: link.title
+              }
+              arr.push(obj)
+            }
+          
+            callback("showLinks", arr);
+             mongoose.disconnect();
           });
         }
 }

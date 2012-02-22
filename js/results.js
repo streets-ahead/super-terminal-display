@@ -1,8 +1,10 @@
 var results = {
   showLinks: function(args){
-               var links = args.links
-               for(var link in links){
-                 println("\t<a href='" + link.link + "'>" + link.title + "</a>")
+               for(var i in args){
+                  var link = args[i]
+                  var title = (link.title) ? link.title : link.link;
+                  var aLink = "<a href='" + link.link + "'>" + title + "</a>"
+                  println("\t " + aLink)
                }
              },
   linkAdded: function(args){
