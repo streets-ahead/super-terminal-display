@@ -3,8 +3,7 @@ var $tin = $('#tin');
 
 (function() {
 	var ua = navigator.userAgent.toLowerCase();
-	console.log(ua.search(/iphone|ios|ipad|ipod|android/ig))
-	if(ua.search(/iphone|ios|ipad|ipod|android/ig) > -1) {
+	if(ua.search(/iphone|ios|ipad|ipod|android/g) > -1) {
 		$('#focusbutton').show();
 		$('#focusbutton').click(function() {
 			$tin.focus();
