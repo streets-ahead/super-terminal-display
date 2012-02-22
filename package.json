@@ -8,5 +8,5 @@
     mongoose: ">=2.5.8",
     zombie: ">=0.12.14"
   },
-  engine: "node 0.6.2"
+  engine: "node >= 0.6.2"
 }

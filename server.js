@@ -14,7 +14,7 @@ var server = dnode({
     var cmd = require('./plugins/' + plugin + '.js');
     console.log(args);
     console.log(callback);
-    cmd.run(args[0], args.slice(1), callback);
+    cmd.run(args[0],callback, args.slice(1));
   }
 });
 server.listen(app);
