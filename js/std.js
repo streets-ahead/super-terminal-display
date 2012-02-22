@@ -115,7 +115,7 @@ function toggleFade() {
 
 setInterval(function() { toggleFade() }, 25)
 
-DNode.connect(function(remote){
+DNode.connect('samorterry.com', 3456, function(remote){
   terminal = remote;
 });
 
