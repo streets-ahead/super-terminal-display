@@ -1,10 +1,23 @@
 
+var $tin = $('#tin');
+
+(function() {
+	var ua = navigator.userAgent.toLowerCase();
+	if(ua.search(/iphone|ios|ipad|ipod|android/ig)) {
+		$('#focusbutton').show();
+		$('#focusbutton').click(function() {
+			$tin.focus();
+		});
+		$('body').css('padding-top', '50px');
+	}
+})()
+
 var commandStack = [];
 var commandPointer = 0;
 
 var terminal;
 
-var $tin = $('#tin');
+
 $tin.focus();
 $tin.blur( function() {
 	console.log('blur');

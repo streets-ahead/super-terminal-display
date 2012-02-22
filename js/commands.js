@@ -25,7 +25,7 @@ var commands = {
 		window.open('http://video.google.com/videoplay?docid=-3382491587979249836');
 	},
 	'sg': function(args) {
-		this.img('http://26.media.tumblr.com/tumblr_kxyk8tgEPA1qzn4vjo1_500.jpg');
+		this.img(['http://26.media.tumblr.com/tumblr_kxyk8tgEPA1qzn4vjo1_500.jpg']);
 	},
 	'spanish-genius': this['sg'],
 	'clear': function(args) {
