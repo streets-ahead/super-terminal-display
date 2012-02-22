@@ -1,4 +1,7 @@
 var commands = {
+  'quit': function(args){
+    self.close()
+  },
 	'streets': function(args) {
 		window.open('http://streetsaheadllc.com');
 		},
