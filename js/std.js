@@ -114,9 +114,6 @@ function toggleFade() {
 
 setInterval(function() { toggleFade() }, 25)
 
-var saLink = "<a href='http://streetsaheadllc.com'>Streets Ahead</a>"
-println("Welcome to Super Terminal Display, this site is brought to you by " + saLink + ".  Type help to get started.");
-
 DNode.connect(function(remote){
   terminal = remote;
 });
