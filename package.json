@@ -1,0 +1,12 @@
+{
+  name: "STD",
+  description: "Super Terminal Display hosted @ samorterry.com",
+  author: "Streets Ahead, LLC",
+  dependencies: {
+    express: ">=2.5.8",
+    dnode: ">=0.9.6",
+    mongoose: ">=2.5.8",
+    zombie: ">=0.12.14"
+  },
+  engine: "node 0.6.2"
+}
