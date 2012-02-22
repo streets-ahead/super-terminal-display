@@ -11,7 +11,7 @@ In browser:
 #### Link
 Adding a link:
 
-> link add <url>
+> link add _URL_
 
 Showing Links:
 
